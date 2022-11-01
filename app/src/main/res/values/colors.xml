@@ -6,6 +6,9 @@
     <color name="secondaryColor">#03a9f4</color>
     <color name="secondaryLightColor">#67daff</color>
     <color name="secondaryDarkColor">#007ac1</color>
+    <color name="red">#AE1F1F</color>
+    <color name="darkGray">#333333</color>
+    <color name="gray">#DCDCDC</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
 </resources>

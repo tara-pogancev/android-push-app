@@ -2,4 +2,18 @@
     <string name="app_name">PushApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="reach_your_new_best_today">Reach your new best today.</string>
+    <string name="because_every_champion_needs_their_app">Because every champion needs their app.</string>
+    <string name="starting_in">STARTING IN...</string>
+    <string name="hold_this_position">Hold this position...</string>
+    <string name="about_this_exercise">About this exercise:</string>
+    <string name="exercise_description">Lorem ipsum dolor sit amet, lis rhoncus leo, vitae aliquet nisi fermentum a. Pellentesque vulputate magna sed est dignissim, a molestie est sodales.</string>
+    <string name="remaining_time">%d s</string>
+    <string name="stop">STOP</string>
+    <string name="pause">PAUSE</string>
+    <string name="total_workout_time">Total workout time: %d s</string>
+    <string name="restart">RESTART</string>
+    <string name="resume">RESUME</string>
+    <string name="interval_duration">Interval duration</string>
+    <string name="start">START</string>
 </resources>
