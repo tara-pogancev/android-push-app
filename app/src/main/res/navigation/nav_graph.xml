@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startExerciseFragment">
+
+    <fragment
+        android:id="@+id/startExerciseFragment"
+        android:name="com.tarapogancev.pushapp.ui.StartExerciseFragment"
+        android:label="fragment_start_exercise"
+        tools:layout="@layout/fragment_start_exercise" >
+        <action
+            android:id="@+id/action_startExerciseFragment_to_intervalSelectionFragment"
+            app:destination="@id/intervalSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/intervalSelectionFragment"
+        android:name="com.tarapogancev.pushapp.ui.IntervalSelectionFragment"
+        android:label="fragment_interval_selection"
+        tools:layout="@layout/fragment_interval_selection" >
+        <action
+            android:id="@+id/action_intervalSelectionFragment_to_countdownFragment"
+            app:destination="@id/countdownFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/countdownFragment"
+        android:name="com.tarapogancev.pushapp.ui.CountdownFragment"
+        android:label="fragment_countdown"
+        tools:layout="@layout/fragment_countdown" >
+        <action
+            android:id="@+id/action_countdownFragment_to_exerciseFragment"
+            app:destination="@id/exerciseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseFragment"
+        android:name="com.tarapogancev.pushapp.ui.ExerciseFragment"
+        android:label="fragment_exercise"
+        tools:layout="@layout/fragment_exercise" >
+        <action
+            android:id="@+id/action_exerciseFragment_to_finishExerciseFragment"
+            app:destination="@id/finishExerciseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/finishExerciseFragment"
+        android:name="com.tarapogancev.pushapp.ui.FinishExerciseFragment"
+        android:label="fragment_finish_exercise"
+        tools:layout="@layout/fragment_finish_exercise" >
+        <action
+            android:id="@+id/action_finishExerciseFragment_to_exerciseFragment"
+            app:destination="@id/exerciseFragment" />
+        <action
+            android:id="@+id/action_finishExerciseFragment_to_startExerciseFragment"
+            app:destination="@id/startExerciseFragment" />
+    </fragment>
+</navigation>
