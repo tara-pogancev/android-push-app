@@ -9,10 +9,6 @@ import com.tarapogancev.pushapp.R
 
 class FinishExerciseFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -1,6 +1,7 @@
 package com.tarapogancev.pushapp.viewmodel
 
 import android.os.CountDownTimer
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,7 +22,8 @@ class ExerciseViewModel : ViewModel() {
 
     private lateinit var startTimer: CountDownTimer
 
-    
+    private lateinit var exerciseTimer: CountDownTimer
+    var isTimerRunning: Boolean = false
 
     init {
         resetExercise()
@@ -40,15 +42,60 @@ class ExerciseViewModel : ViewModel() {
     }
 
     fun startTimer() {
+        exerciseTimer = object : CountDownTimer((_interval.value!!.times(1000)).toLong(), 1000) {
+            override fun onTick(p0: Long) {
+                _totalTime.value = _totalTime.value?.plus(1)
+                _currentTimer.value = _currentTimer.value?.minus(1)
 
+            }
+
+            override fun onFinish() {
+                Log.e("EXERCISE TIMER", "Finished!")
+                _currentTimer.value = _interval.value
+                changeImage()
+                exerciseTimer.start()
+            }
+        }.start()
+
+        isTimerRunning = true
     }
 
     fun pauseTimer() {
+        exerciseTimer.cancel()
+        isTimerRunning = false
+    }
 
+    fun resumeTimer() {
+        exerciseTimer = object : CountDownTimer((_currentTimer.value!!.times(1000)).toLong(), 1000) {
+            override fun onTick(p0: Long) {
+                _totalTime.value = _totalTime.value?.plus(1)
+                _currentTimer.value = _currentTimer.value?.minus(1)
+
+            }
+
+            override fun onFinish() {
+                Log.e("EXERCISE TIMER", "Finished!")
+                _currentTimer.value = _interval.value
+                changeImage()
+                exerciseTimer.start()
+            }
+        }.start()
+        isTimerRunning = true
+    }
+
+    fun stopTimer() {
+        exerciseTimer.cancel()
+        isTimerRunning = false
     }
 
     fun finishExercise() {
+        exerciseTimer.cancel()
+        isTimerRunning = false
         resetExercise()
+    }
+
+    fun changeImage() {
+
     }
 
     fun startCountDownTimer() {
@@ -59,6 +106,7 @@ class ExerciseViewModel : ViewModel() {
 
             override fun onFinish() {
                 _countDownTimer.value = 4
+                Log.e("START TIMER", "Finished!")
             }
         }.start()
     }
