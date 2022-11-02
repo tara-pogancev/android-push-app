@@ -38,13 +38,13 @@ class CountdownFragment : Fragment() {
 
         }
 
+        sharedViewModel.startCountDownTimer()
+
         sharedViewModel.countDownTimer.observe(viewLifecycleOwner) { timer ->
-            if (timer == -1) {
+            if (timer == 0) {
                 findNavController().navigate(R.id.action_countdownFragment_to_exerciseFragment)
             }
         }
-
-        sharedViewModel.startCountDownTimer()
     }
 
     override fun onDestroy() {

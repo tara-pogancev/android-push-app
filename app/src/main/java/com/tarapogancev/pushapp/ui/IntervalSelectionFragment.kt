@@ -38,7 +38,6 @@ class IntervalSelectionFragment : Fragment() {
                 viewModel?.setInterval(editText.toInt())
                 findNavController().navigate(R.id.action_intervalSelectionFragment_to_countdownFragment)
             }
-
         }
     }
 
