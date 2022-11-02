@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.tarapogancev.pushapp.R
 
 class ExerciseViewModel : ViewModel() {
 
@@ -20,10 +21,19 @@ class ExerciseViewModel : ViewModel() {
     private val _totalTime = MutableLiveData<Int>()
     val totalTime : LiveData<Int> = _totalTime
 
+    private val _position = MutableLiveData<Int>()
+    val position : LiveData<Int> = _position
+
     private lateinit var startTimer: CountDownTimer
 
     private lateinit var exerciseTimer: CountDownTimer
     var isTimerRunning: Boolean = false
+
+    private val positionList = listOf<Int>(
+        R.drawable.position1,
+        R.drawable.position2,
+        R.drawable.position3
+    )
 
     init {
         resetExercise()
@@ -34,6 +44,7 @@ class ExerciseViewModel : ViewModel() {
         _currentTimer.value = 5
         _totalTime.value = 0
         _countDownTimer.value = 4
+        _position.value = positionList.random()
     }
 
     fun setInterval(newInterval: Int) {
@@ -95,7 +106,11 @@ class ExerciseViewModel : ViewModel() {
     }
 
     fun changeImage() {
-
+        var newPosition = positionList.random()
+        while (newPosition == _position.value) {
+            newPosition = positionList.random()
+        }
+        _position.value = newPosition
     }
 
     fun startCountDownTimer() {
