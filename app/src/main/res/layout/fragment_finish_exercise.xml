@@ -2,8 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     tools:context=".ui.FinishExerciseFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.tarapogancev.pushapp.viewmodel.ExerciseViewModel" />
+    </data>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -36,7 +41,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/total_workout_time"
+                        android:text="@{@string/total_workout_time(viewModel.totalTime)}"
+                        tools:text="@string/total_workout_time"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
                     <LinearLayout

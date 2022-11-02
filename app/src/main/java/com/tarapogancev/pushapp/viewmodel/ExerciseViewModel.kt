@@ -53,6 +53,7 @@ class ExerciseViewModel : ViewModel() {
     }
 
     fun startTimer() {
+        _currentTimer.value = _interval.value
         exerciseTimer = object : CountDownTimer((_interval.value!!.times(1000)).toLong(), 1000) {
             override fun onTick(p0: Long) {
                 _totalTime.value = _totalTime.value?.plus(1)
@@ -88,7 +89,7 @@ class ExerciseViewModel : ViewModel() {
                 Log.e("EXERCISE TIMER", "Finished!")
                 _currentTimer.value = _interval.value
                 changeImage()
-                exerciseTimer.start()
+                startTimer()
             }
         }.start()
         isTimerRunning = true

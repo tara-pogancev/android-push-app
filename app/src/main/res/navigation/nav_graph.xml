@@ -47,10 +47,10 @@
         android:label="fragment_finish_exercise"
         tools:layout="@layout/fragment_finish_exercise" >
         <action
-            android:id="@+id/action_finishExerciseFragment_to_exerciseFragment"
-            app:destination="@id/exerciseFragment" />
-        <action
             android:id="@+id/action_finishExerciseFragment_to_startExerciseFragment"
             app:destination="@id/startExerciseFragment" />
+        <action
+            android:id="@+id/action_finishExerciseFragment_to_countdownFragment"
+            app:destination="@id/countdownFragment" />
     </fragment>
 </navigation>
