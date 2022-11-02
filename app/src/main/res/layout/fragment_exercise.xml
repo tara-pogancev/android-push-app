@@ -62,6 +62,7 @@
                 android:layout_marginTop="50dp"
                 app:cardCornerRadius="50dp"
                 app:cardElevation="20dp"
+                android:backgroundTint="@color/white"
                 app:layout_constraintTop_toBottomOf="@id/card_position">
 
                 <LinearLayout
@@ -75,6 +76,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/about_this_exercise"
+                        android:textColor="@color/black"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
                     <TextView
