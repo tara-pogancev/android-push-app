@@ -1,135 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.ExerciseFragment"
-    android:background="@color/darkGray"
-    >
 
+    tools:context=".ui.ExerciseFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:background="@color/darkGray">
 
-        <TextView
-            android:id="@+id/text_holdThisPosition"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hold_this_position"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_margin="25dp"
-            android:textColor="@color/white"
-            style="@style/TextAppearance.AppCompat.Headline"/>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_position"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:layout_margin="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_holdThisPosition"
-            app:cardElevation="20dp"
-            app:cardCornerRadius="20dp">
-            
-            <ImageView
-                android:id="@+id/image_position"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/position1"
-                android:scaleType="centerCrop"
-                tools:ignore="ContentDescription" />
-            
-        </androidx.cardview.widget.CardView>
-        
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="450dp"
-            app:layout_constraintTop_toBottomOf="@id/card_position"
-            android:layout_marginTop="50dp"
-            android:layout_marginHorizontal="10dp"
-            app:cardCornerRadius="50dp"
-            app:cardElevation="20dp"
-            >
+            android:layout_height="match_parent">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/text_holdThisPosition"
+                style="@style/TextAppearance.AppCompat.Headline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="40dp">
+                android:layout_margin="25dp"
+                android:text="@string/hold_this_position"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                    android:text="@string/about_this_exercise"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_position"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_margin="20dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_holdThisPosition">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/darkGray"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    android:text="@string/exercise_description"/>
-
-                <TextView
-                    android:id="@+id/text_exerciseCounter"
+                <ImageView
+                    android:id="@+id/image_position"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/remaining_time"
-                    android:gravity="center"
-                    android:textSize="65sp"
-                    android:textColor="@color/black"
-                    android:layout_marginVertical="10dp"/>
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/position1"
+                    tools:ignore="ContentDescription" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="50dp"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="20dp"
+                app:layout_constraintTop_toBottomOf="@id/card_position">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="40dp"
+                    android:orientation="vertical">
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/button_stopExercise"
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/red"
-                        android:paddingHorizontal="40dp"
-                        android:paddingVertical="15dp"
-                        android:layout_marginRight="30dp"
-                        android:text="@string/stop"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        app:cornerRadius="20dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/editText_intervalField" />
+                        android:text="@string/about_this_exercise"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/button_pauseExercise"
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/primaryLightColor"
-                        android:paddingHorizontal="40dp"
-                        android:paddingVertical="15dp"
-                        android:text="@string/pause"
+                        android:text="@string/exercise_description"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/darkGray" />
+
+                    <TextView
+                        android:id="@+id/text_exerciseCounter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:gravity="center"
+                        android:text="@string/remaining_time"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
-                        app:cornerRadius="20dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/editText_intervalField" />
+                        android:textSize="65sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/button_stopExercise"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="30dp"
+                            android:backgroundTint="@color/red"
+                            android:paddingHorizontal="40dp"
+                            android:paddingVertical="15dp"
+                            android:text="@string/stop"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            app:cornerRadius="20dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/editText_intervalField" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/button_pauseExercise"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/primaryLightColor"
+                            android:paddingHorizontal="40dp"
+                            android:paddingVertical="15dp"
+                            android:text="@string/pause"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            app:cornerRadius="20dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/editText_intervalField" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 
-</FrameLayout>
+
+</layout>
