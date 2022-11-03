@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_start_exercise" >
         <action
             android:id="@+id/action_startExerciseFragment_to_intervalSelectionFragment"
-            app:destination="@id/intervalSelectionFragment" />
+            app:destination="@id/intervalSelectionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/intervalSelectionFragment"
@@ -21,7 +23,9 @@
         tools:layout="@layout/fragment_interval_selection" >
         <action
             android:id="@+id/action_intervalSelectionFragment_to_countdownFragment"
-            app:destination="@id/countdownFragment" />
+            app:destination="@id/countdownFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/countdownFragment"
@@ -30,7 +34,9 @@
         tools:layout="@layout/fragment_countdown" >
         <action
             android:id="@+id/action_countdownFragment_to_exerciseFragment"
-            app:destination="@id/exerciseFragment" />
+            app:destination="@id/exerciseFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/exerciseFragment"
@@ -39,7 +45,9 @@
         tools:layout="@layout/fragment_exercise" >
         <action
             android:id="@+id/action_exerciseFragment_to_finishExerciseFragment"
-            app:destination="@id/finishExerciseFragment" />
+            app:destination="@id/finishExerciseFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/finishExerciseFragment"
@@ -48,9 +56,13 @@
         tools:layout="@layout/fragment_finish_exercise" >
         <action
             android:id="@+id/action_finishExerciseFragment_to_startExerciseFragment"
-            app:destination="@id/startExerciseFragment" />
+            app:destination="@id/startExerciseFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
         <action
             android:id="@+id/action_finishExerciseFragment_to_countdownFragment"
-            app:destination="@id/countdownFragment" />
+            app:destination="@id/countdownFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 </navigation>
