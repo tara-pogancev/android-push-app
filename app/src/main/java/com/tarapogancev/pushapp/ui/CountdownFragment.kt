@@ -14,6 +14,7 @@ import com.tarapogancev.pushapp.databinding.FragmentCountdownBinding
 import com.tarapogancev.pushapp.databinding.FragmentIntervalSelectionBinding
 import com.tarapogancev.pushapp.navigation.Navigation
 import com.tarapogancev.pushapp.viewmodel.ExerciseViewModel
+import com.tarapogancev.pushapp.viewmodel.TICK_MILLIS
 
 
 class CountdownFragment : Fragment() {
@@ -47,7 +48,7 @@ class CountdownFragment : Fragment() {
         sharedViewModel.startCountDownTimer()
 
         sharedViewModel.countDownTimer.observe(viewLifecycleOwner) { timer ->
-            if (timer == 0) {
+            if (timer < TICK_MILLIS) {
                 navController.countdownToExercise()
             }
         }

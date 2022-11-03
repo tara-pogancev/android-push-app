@@ -44,7 +44,7 @@
                     android:textColor="@color/white"
                     android:textSize="120sp"
                     android:textStyle="bold"
-                    android:text="@{viewModel.countDownTimer.toString()}"
+                    android:text="@{viewModel.stopWatchCountDown}"
                     tools:text="3" />
 
 

@@ -92,7 +92,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
-                        android:text="@{@string/remaining_time(viewModel.currentTimer + 1)}"
+                        android:text="@{viewModel.stopWatch}"
                         android:textColor="@color/black"
                         android:textSize="65sp"
                         tools:text="5 s"/>

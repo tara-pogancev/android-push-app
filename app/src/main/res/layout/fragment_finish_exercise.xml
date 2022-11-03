@@ -41,7 +41,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{@string/total_workout_time(viewModel.totalTime)}"
+                        android:text="@{@string/total_workout_time(viewModel.stopWatch)}"
                         tools:text="@string/total_workout_time"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 

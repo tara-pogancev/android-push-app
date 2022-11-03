@@ -7,6 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tarapogancev.pushapp.R
 
+
+const val TICK_MILLIS: Long = 123
+
 class ExerciseViewModel : ViewModel() {
 
     private val _interval = MutableLiveData<Int>()
@@ -29,6 +32,12 @@ class ExerciseViewModel : ViewModel() {
     private lateinit var exerciseTimer: CountDownTimer
     var isTimerRunning: Boolean = false
 
+    private val _stopWatchCountDown = MutableLiveData<String>()
+    val stopWatchCountDown: LiveData<String> = _stopWatchCountDown
+
+    private val _stopWatch = MutableLiveData<String>()
+    val stopWatch: LiveData<String> = _stopWatch
+
     private val positionList = listOf<Int>(
         R.drawable.position1,
         R.drawable.position2,
@@ -41,29 +50,32 @@ class ExerciseViewModel : ViewModel() {
 
     private fun resetExercise() {
         _interval.value = 5
-        _currentTimer.value = 5
+        _currentTimer.value = 5000
         _totalTime.value = 0
-        _countDownTimer.value = 4
+        _countDownTimer.value = 3000
         _position.value = positionList.random()
+        _stopWatch.value = "00:00.000"
+        _stopWatchCountDown.value = "3.00"
     }
 
     fun setInterval(newInterval: Int) {
         _interval.value = newInterval
-        _currentTimer.value = newInterval
+        _currentTimer.value = _interval.value?.times(1000)
     }
 
     fun startTimer() {
-        _currentTimer.value = _interval.value
-        exerciseTimer = object : CountDownTimer((_interval.value!!.times(1000)).toLong(), 1000) {
+        _currentTimer.value = _interval.value?.times(1000)
+        exerciseTimer = object : CountDownTimer((_interval.value!!.times(1000)).toLong(), TICK_MILLIS) {
             override fun onTick(p0: Long) {
-                _totalTime.value = _totalTime.value?.plus(1)
-                _currentTimer.value = _currentTimer.value?.minus(1)
+                _totalTime.value = _totalTime.value?.plus(TICK_MILLIS.toInt())
+                _currentTimer.value = _currentTimer.value?.minus(TICK_MILLIS.toInt())
+                formatStopWatch()
 
             }
 
             override fun onFinish() {
                 Log.e("EXERCISE TIMER", "Finished!")
-                _currentTimer.value = _interval.value
+                _currentTimer.value = _interval.value?.times(1000)
                 changeImage()
                 exerciseTimer.start()
             }
@@ -73,21 +85,24 @@ class ExerciseViewModel : ViewModel() {
     }
 
     fun pauseTimer() {
+        Log.e("TIMER", "Paused!")
         exerciseTimer.cancel()
         isTimerRunning = false
     }
 
     fun resumeTimer() {
-        exerciseTimer = object : CountDownTimer((_currentTimer.value!!.times(1000)).toLong(), 1000) {
+        Log.e("TIMER", "Resumed!")
+        exerciseTimer = object : CountDownTimer(_currentTimer.value!!.toLong(), TICK_MILLIS) {
             override fun onTick(p0: Long) {
-                _totalTime.value = _totalTime.value?.plus(1)
-                _currentTimer.value = _currentTimer.value?.minus(1)
+                _totalTime.value = _totalTime.value?.plus(TICK_MILLIS.toInt())
+                _currentTimer.value = _currentTimer.value?.minus(TICK_MILLIS.toInt())
+                formatStopWatch()
 
             }
 
             override fun onFinish() {
-                Log.e("EXERCISE TIMER", "Finished!")
-                _currentTimer.value = _interval.value
+                Log.e("EXERCISE TIMER2", "Finished!")
+                _currentTimer.value = _interval.value?.times(1000)
                 changeImage()
                 startTimer()
             }
@@ -96,6 +111,7 @@ class ExerciseViewModel : ViewModel() {
     }
 
     fun stopTimer() {
+        Log.e("EXERCISE TIMER", "Stopped!")
         exerciseTimer.cancel()
         isTimerRunning = false
     }
@@ -115,15 +131,59 @@ class ExerciseViewModel : ViewModel() {
     }
 
     fun startCountDownTimer() {
-        startTimer = object : CountDownTimer(4000, 1000) {
+        startTimer = object : CountDownTimer(3000, TICK_MILLIS) {
             override fun onTick(millisUntilFinished: Long) {
-                _countDownTimer.value = _countDownTimer.value?.minus(1)
+                _countDownTimer.value = _countDownTimer.value?.minus(TICK_MILLIS.toInt())
+                formatStopWatchCountDown()
             }
 
             override fun onFinish() {
-                _countDownTimer.value = 4
+                _countDownTimer.value = 3000
                 Log.e("START TIMER", "Finished!")
             }
         }.start()
+    }
+
+    fun formatStopWatchCountDown() {
+        val time = _countDownTimer.value ?: 0
+        var seconds = time / 1000
+        var millis = time % 1000
+
+        var secondsStr = seconds.toString()
+
+        var millisStr = millis.toString()
+        if (millisStr.length == 1) {
+            millisStr = "00$millisStr"
+        } else if (millisStr.length == 2) {
+            millisStr = "0$millisStr"
+        }
+
+        _stopWatchCountDown.value = "$secondsStr.$millisStr"
+    }
+
+    fun formatStopWatch() {
+        val time = _totalTime.value ?: 0
+        var minutes = time / 60000
+        var seconds = time % 60000 / 1000
+        var millis = time % 1000
+
+        var minutesStr = minutes.toString()
+        if (minutesStr.length == 1) {
+            minutesStr = "0$minutesStr"
+        }
+
+        var secondsStr = seconds.toString()
+        if (secondsStr.length == 1) {
+            secondsStr = "0$secondsStr"
+        }
+
+        var millisStr = millis.toString()
+        if (millisStr.length == 1) {
+            millisStr = "00$millisStr"
+        } else if (millisStr.length == 2) {
+            millisStr = "0$millisStr"
+        }
+
+        _stopWatch.value = "$minutesStr:$secondsStr.$millisStr"
     }
 }

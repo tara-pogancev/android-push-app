@@ -11,7 +11,7 @@
     <string name="remaining_time">%d s</string>
     <string name="stop">STOP</string>
     <string name="pause">PAUSE</string>
-    <string name="total_workout_time">Total workout time: %d s</string>
+    <string name="total_workout_time">Total time: %s</string>
     <string name="restart">RESTART</string>
     <string name="resume">RESUME</string>
     <string name="interval_duration">Interval duration</string>
